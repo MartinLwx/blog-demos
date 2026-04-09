@@ -1,0 +1,3 @@
+[submodule "tree-sitter-query/tree-sitter-python"]
+	path = tree-sitter-query/tree-sitter-python
+	url = https://github.com/tree-sitter/tree-sitter-python.git
