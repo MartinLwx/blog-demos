@@ -1,0 +1,4 @@
+(executable
+ (public_name tco)
+ (name main)
+ (libraries tco core core_bench core_unix.command_unix))
