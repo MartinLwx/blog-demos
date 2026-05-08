@@ -1,0 +1,16 @@
+[project]
+name = "dtw"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "altair>=6.1.0",
+    "numpy>=2.4.4",
+    "polars>=1.40.1",
+]
+
+[dependency-groups]
+dev = [
+    "jupyterlab>=4.5.7",
+]
