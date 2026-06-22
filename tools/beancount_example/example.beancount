@@ -1,0 +1,72 @@
+option "operating_currency" "CNY"
+
+2025-01-01 open Assets:Cash
+2025-01-01 open Assets:Stock:NASDAQ:基金A "FIFO"
+2025-01-01 open Expenses:Stock:NASDAQ:基金A
+2025-01-01 open Income:Stock:NASDAQ:基金A:Dividend
+2025-01-01 open Income:Stock:NASDAQ:基金A:CapitalGain
+
+2025-01-01 open Assets:Pocket:基金B "FIFO"
+2025-01-01 open Expenses:Pocket:基金B
+2025-01-01 open Income:Pocket:基金B:Dividend
+2025-01-01 open Income:Pocket:基金B:CapitalGain
+
+2025-01-01 commodity NASDAQA
+2025-01-01 commodity CNY
+
+2010-01-01 custom "fava-extension" "fava_portfolio_returns" "{
+  'beangrow_config': 'beangrow.pbtxt',
+  'pnl_color_scheme': 'red-green',
+  'language': 'zh-cn'
+}"
+
+2025-09-01 * "定投"
+  Assets:Stock:NASDAQ:基金A                  81.00 NASDAQA {1.2345 CNY}
+  Expenses:Stock:NASDAQ:基金A                 0.03 CNY
+  Assets:Cash
+  
+2025-09-02 * "定投"
+  Assets:Stock:NASDAQ:基金A                  81.07 NASDAQA {1.2335 CNY}
+  Expenses:Stock:NASDAQ:基金A                 0.03 CNY
+  Assets:Cash
+
+2025-09-03 * "定投"
+  Assets:Stock:NASDAQ:基金A                  81.87 NASDAQA {1.2215 CNY}
+  Expenses:Stock:NASDAQ:基金A                 0.03 CNY
+  Assets:Cash
+
+2025-09-04 * "卖出"
+  Assets:Stock:NASDAQ:基金A                    -50 NASDAQA {1.2335 CNY} @ 1.3355 CNY
+  Assets:Cash                              66.78 CNY
+  Income:Stock:NASDAQ:基金A:CapitalGain
+
+2025-09-05 * "红利再投资"
+  Assets:Stock:NASDAQ:基金A                     20 NASDAQA {1.2111 CNY}
+  Income:Stock:NASDAQ:基金A:Dividend
+
+2025-09-05 * "现金分红"
+  Income:Stock:NASDAQ:基金A:Dividend         23.00 CNY
+  Assets:Cash
+  
+2025-09-06 * "买入基金 B 1000 元"
+  Assets:Cash                           -1000.00 CNY
+  Expenses:Pocket:基金B                       1.20 CNY
+  Assets:Pocket:基金B
+
+2025-09-07 * "从基金里提取 10 元"
+  Assets:Cash                              10.00 CNY
+  Assets:Pocket:基金B
+
+2025-09-07 * "从基金里提取 10 元并计提 2.00 元的利息"
+  Assets:Cash                              10.00 CNY
+  Income:Pocket:基金B:CapitalGain            -2.00 CNY
+  Assets:Pocket:基金B
+
+; Mock data
+2025-09-01 price NASDAQA 1.2345 CNY
+2025-09-02 price NASDAQA 1.2335 CNY
+2025-09-03 price NASDAQA 1.2215 CNY
+2025-09-04 price NASDAQA 1.3355 CNY
+2025-09-05 price NASDAQA 1.2111 CNY
+2025-09-06 price NASDAQA 1.1111 CNY
+2026-06-22 price NASDAQA 1.5678 CNY

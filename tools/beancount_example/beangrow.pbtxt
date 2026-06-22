@@ -1,0 +1,23 @@
+investments {
+  investment {
+    currency: "CNY"
+    asset_account: "Assets:Stock:NASDAQ:基金A"
+    dividend_accounts: "Income:Stock:NASDAQ:基金A:Dividend",
+    cash_accounts: "Assets:Cash",
+  }
+  investment {
+    currency: "CNY"
+    asset_account: "Assets:Pocket:基金B"
+    dividend_accounts: "Income:Pocket:基金B:Dividend"
+    cash_accounts: "Assets:Cash",
+  }
+}
+
+groups {
+  group {
+    currency: "CNY"
+    name: "个人资产配置"
+    investment: "Assets:Stock:*",
+    investment: "Assets:Pocket:*",
+  }
+}
