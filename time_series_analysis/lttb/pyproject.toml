@@ -1,0 +1,9 @@
+[project]
+name = "lttb"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "akshare>=1.18.94",
+    "altair>=6.2.2",
+    "pandas>=3.0.5",
+]
